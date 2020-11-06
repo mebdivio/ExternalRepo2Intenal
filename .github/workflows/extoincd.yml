@@ -30,12 +30,11 @@ jobs:
   #      python-version: 3.8
    - name: Checking the API End points
      run: |
-       curl https://api.divio.com/apps/v3/ -H 'authorization: Token CCRtxMcRoTO9F2EloH1wccQBbdZT0NBNkmw3Ep35U8kPCth5OfqE3EKpG5BXXWfK'
-      #  curl https://api.divio.com/apps/v3/ -H 'authorization: Token $DIVIO_API_TOKEN'
+       curl https://api.divio.com/apps/v3/ -H 'authorization: Token "$DIVIO_API_TOKEN"'
 
    - name: Deploy to Divio Cloud using the API
      run: |
-       curl -X POST --data 'stage=change-external-repo-for-to-internal-test' --header 'Authorization: Basic CCRtxMcRoTO9F2EloH1wccQBbdZT0NBNkmw3Ep35U8kPCth5OfqE3EKpG5BXXWfK' https://control.divio.com/api/v1/website/88633/deploy/
+       curl -X POST --data 'stage="$DIVIO_PROJECT_SLUG"' --header 'Authorization: Basic "$DIVIO_API_TOKEN"' https://control.divio.com/api/v1/website/"$DIVIO_PROJECT_ID"/deploy/
   
   #  - name: Install Divio CLI
   #    run: |
