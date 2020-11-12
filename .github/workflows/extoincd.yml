@@ -29,9 +29,9 @@ jobs:
   #    uses: actions/setup-python@v1
   #    with:
   #      python-version: 3.8
-   - name: Checking the API End points
-     run: |
-      curl https://api.divio.com/apps/v3/ -H authorization: Token $DIVIO_API_TOKEN
+  #  - name: Checking the API End points
+  #    run: |
+  #     curl https://api.divio.com/apps/v3/ -H authorization: Token $DIVIO_API_TOKEN
       
    - name: Deploy to Divio Cloud using the API
      run: |
