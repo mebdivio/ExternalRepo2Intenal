@@ -18,6 +18,7 @@ jobs:
      DIVIO_PROJECT_ID: ${{ secrets.DIVIO_PROJECT_ID }}  
      DIVIO_PROJECT_SLUG: ${{ secrets.DIVIO_PROJECT_SLUG }}
      ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+
   # The type of runner that this job will run on
    runs-on: ubuntu-latest
  # Steps represent a sequence of tasks that will be executed as part of the job
@@ -29,13 +30,13 @@ jobs:
   #    uses: actions/setup-python@v1
   #    with:
   #      python-version: 3.8
-   - name: Checking the API End points
-     run: |
-      curl https://api.divio.com/apps/v3/ -H "authorization: Token $DIVIO_API_TOKEN"
+  #  - name: Checking the API End points
+  #    run: |
+  #     curl https://api.divio.com/apps/v3/ -H "authorization: Token $DIVIO_API_TOKEN"
       
    - name: Deploy to Divio Cloud using the API
      run: |
-      curl -X POST --data 'environment=$ENVIRONMENT' --header "Authorization: Token $DIVIO_API_TOKEN" https://api.divio.com/apps/v3/deployments/
+      curl -X POST --data "environment=$ENVIRONMENT" --header "Authorization: Token $DIVIO_API_TOKEN" https://api.divio.com/apps/v3/deployments/
   #     curl -X POST --data 'stage=\"$DIVIO_PROJECT_SLUG\"' --header 'Authorization: Basic \"$DIVIO_API_TOKEN\"' https://control.divio.com/api/v1/website/\$DIVIO_PROJECT_ID/deploy/
   #  - name: Install Divio CLI
   #    run: |
